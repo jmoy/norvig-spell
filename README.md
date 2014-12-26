@@ -29,13 +29,13 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
     /usr/bin/time bin/norvig_cc data/train.txt </dev/null
 
-0.79user 0.02system 0:00.82elapsed 98%CPU (0avgtext+0avgdata 18148maxresident)k
-0inputs+0outputs (0major+6044minor)pagefaults 0swaps
+0.76user 0.02system 0:00.82elapsed 95%CPU (0avgtext+0avgdata 18212maxresident)k
+128inputs+0outputs (1major+6044minor)pagefaults 0swaps
 
     /usr/bin/time bin/norvig_cc data/train.txt <data/test.txt >OUTFILE
 
-30.98user 2.81system 0:34.19elapsed 98%CPU (0avgtext+0avgdata 436520maxresident)k
-0inputs+16outputs (0major+845824minor)pagefaults 0swaps
+31.53user 2.54system 0:34.23elapsed 99%CPU (0avgtext+0avgdata 436516maxresident)k
+0inputs+24outputs (0major+845823minor)pagefaults 0swaps
 
     diff -U0 OUTFILE data/output.txt|wc -l
 

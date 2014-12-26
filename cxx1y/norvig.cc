@@ -73,15 +73,6 @@ template<class It> It edits1(const string &word,It out)
   return out;
 }
 
-class snd_comparator
-{
-public:
-  bool operator()(const pair<string,int> &a,
-                  const pair<string,int> &b){
-    return (a.second <= b.second);
-  }
-};
-
 class model {
   unordered_map<string,int> m_freqs;
 
@@ -114,9 +105,8 @@ string model::correct(const string &word)
   annotate(e1,back_inserter(candidates));
   if (candidates.empty()){
     vector<string> e2;
-    auto out = back_inserter(e2);
     for (auto w: e1)
-      out = edits1(w,out);
+      edits1(w,back_inserter(e2));
     annotate(e2,back_inserter(candidates));
   }
   if (candidates.empty())
