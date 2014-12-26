@@ -15,7 +15,7 @@ bin/norvig_hs: haskell/norvig.hs haskell/norvig.hs
 		&& cabal build
 	cp haskell/dist/build/norvig/norvig $@
 
-benchmarks/%.md: bin/%
+benchmarks/%.md: bin/% benchmark
 	./benchmark $< > $@
 
 README.md: Prelude.md $(BENCHMARKS)

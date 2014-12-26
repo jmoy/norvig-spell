@@ -1,8 +1,6 @@
 Implementations of [Norvig's spelling corrector](http://norvig.com/spell-correct.html) in various languages.
 
-Author: Jyotirmoy Bhattacharya
-jyotirmoy@jyotirmoy.net
-http://www.jyotirmoy.net
+Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy.net`
 
 ## Languages
 * [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
