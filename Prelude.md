@@ -1,8 +1,12 @@
-Implementations of Norvig's spelling corrector
-in C++14 and Haskell
+Implementations of [Norvig's spelling corrector](http://norvig.com/spell-correct.html) in various languages.
 
 Author: Jyotirmoy Bhattacharya
 jyotirmoy@jyotirmoy.net
 http://www.jyotirmoy.net
 
-# Benchmarking results
+## Languages
+* [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
+* [C++14](https://github.com/jmoy/norvig-spell/blob/master/cpp1y/norvig.cc)
+* [Haskell](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs)
+
+## Benchmarking results

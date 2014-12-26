@@ -2,14 +2,14 @@
 TIMER=/usr/bin/time
 for prog in "$@"
 do
-  echo -e "\n\n##" $prog
-  echo -e "\n### Timing: training only" 
+  echo -e "\n###" $prog
+  echo -e "\n#### Timing: training only" 
   $TIMER $prog data/train.txt </dev/null 2>&1 >/dev/null 
-  echo -e "\n### Timing: test data"
+  echo -e "\n#### Timing: test data"
   OUTFILE="tmp_output"
   $TIMER $prog data/train.txt <data/test.txt 2>&1 >$OUTFILE 
-  echo -e "### Output difference from Python version" 
-  diff $OUTFILE data/output.txt
+  echo -e "\n### Output difference from Python version" 
+  echo '`diff -U0 output expected|wc -l`' gives $(diff -U0 $OUTFILE data/output.txt|wc -l)
   rm $OUTFILE
 done
 
