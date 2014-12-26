@@ -1,5 +1,6 @@
 EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_hs
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
+DATAFILES:=data/train.txt data/test.txt data/output.txt
 
 ALL: $(EXECUTABLES)
 .PHONY: ALL
@@ -20,7 +21,7 @@ benchmark: benchmarks/all.md
 
 benchmarks/all.md: $(BENCHMARKS)
 	cat $^ > $@
-benchmarks/%.md: bin/% util/mk_benchmark
+benchmarks/%.md: bin/% util/mk_benchmark $(DATAFILES)
 	util/mk_benchmark $< > $@
 
 clean:

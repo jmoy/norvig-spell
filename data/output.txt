@@ -1,6 +1,5 @@
 forbiden, forbidden
 coments, moments
-deciscions descisions, deciscions descisions
 supposidly, supposedly
 embelishing, embelishing
 tecnique, technique
@@ -42,7 +41,6 @@ eximination, examination
 therefoe, therefore
 recomend, recommend
 seperated, separated
-sucssuful succesful, sucssuful succesful
 apparant, apparent
 occureed, occurred
 paerticulaur, particular
@@ -63,7 +61,6 @@ arrangment, arrangement
 responsiblities, responsibilities
 forth, forth
 ordenary, ordinary
-desription descvription desacription, desription descvription desacription
 inconcievable, inconceivable
 dsata, data
 rgister, register
@@ -104,8 +101,6 @@ matriiix, matrix
 proffit, profit
 encorage, encourage
 colate, coat
-disaggreagte disaggreaget, disaggreagte disaggreaget
-recieving reciving, recieving reciving
 provisoe, proviso
 umberalla, umbrella
 aproached, approached
@@ -146,7 +141,6 @@ faulse, false
 seeen, seen
 interogationg, interogationg
 academicly, academic
-relativly relitivly, relativly relitivly
 traditionaly, traditional
 studing, studying
 majorty, majority
@@ -155,7 +149,6 @@ agravating, aggravating
 trasactions, transactions
 aurguing, arguing
 sheertes, sheets
-sucsesive sucessive, sucsesive sucessive
 extreemly, extremely
 especaily, especially
 latter, latter
@@ -170,7 +163,6 @@ contually, continually
 avaiblity, avaiblity
 buisy, busy
 perametres, perametres
-suroundings seroundings, suroundings seroundings
 emploied, employed
 adiquate, adequate
 handel, handed
@@ -179,20 +171,16 @@ familer, family
 beeteen, between
 overal, overall
 timeing, timing
-comittees commitees, comittees commitees
 quies, quiet
 economtric, economic
 errounous, erroneous
 descides, decides
-refereence refference, refereence refference
 inteligence, intelligence
 ediion ediition, ediion ediition
 arte, are
 appologies, apologies
-thermawere thermawhere, thermawere thermawhere
 tecniques, technique
 volantary, voluntary
-subsequant subsiquent, subsequant subsiquent
 curruntly, currently
 forcast, forecast
 wepons, weapons
@@ -211,14 +199,11 @@ carear, career
 mony, many
 anual, annual
 acording, according
-recives recieves, recives recieves
 expence, expense
-relavent relevaant, relavent relevaant
 tasble, table
 throuout, throughout
 conferance, conference
 sensable, sensible
-discribed describd, discribed describd
 unioun, union
 intrest, interest
 flexable, flexible
@@ -253,18 +238,14 @@ investegated, investigated
 bonas, bones
 concieved, conceived
 nationaly, national
-comppared compased, comppared compased
 moveing, moving
 nessesity, necessity
-oppertunity oppotunity opperttunity, oppertunity oppotunity opperttunity
 thorts, thorns
 equaled, equaled
 scrutiniesed, scrutinized
-analiss analsis analisis, analiss analsis analisis
 pattarns, patterns
 quaties, duties
 easyly, easily
-oranisation oragnisation, oranisation oragnisation
 thw hte thi, thw hte thi
 corparate, corporate
 citisum, citisum
@@ -280,28 +261,23 @@ mathematicaly, mathematical
 sorce, force
 comibine, combine
 inut, nut
-currers carrers, currers carrers
 resoved, removed
 diemands, demands
 unequivocaly, unequivocal
 suufering, suffering
-imidatly imediatly, imidatly imediatly
 acepted, accepted
 projeccts, projects
-necasery nessasary nessisary neccassary, necasery nessasary nessisary neccassary
 journaism, journalism
 unessessay, unessessay
 nite, note
 oputput, output
 seurity, security
 esential, essential
-benificial benficial, benificial benficial
 rquested, requested
 suplementary, supplementary
 questionare, questionable
 empolyment, employment
 proceding, preceding
-descisions descision, descisions descision
 pere, pere
 discresion, discretion
 reching, reaching
@@ -330,7 +306,6 @@ understadable, understandable
 safegaurd, safeguard
 consisit, consist
 declaratrions, declarations
-muinutes muiuets, muinutes muiuets
 assosiated, associated
 accessability, accessability
 examin, examine
