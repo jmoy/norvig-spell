@@ -1,0 +1,15 @@
+#!/bin/bash
+TIMER=/usr/bin/time
+for prog in "$@"
+do
+  echo -e "\n\n##" $prog
+  echo -e "\n### Timing: training only" 
+  $TIMER $prog data/train.txt </dev/null 2>&1 >/dev/null 
+  echo -e "\n### Timing: test data"
+  OUTFILE="tmp_output"
+  $TIMER $prog data/train.txt <data/test.txt 2>&1 >$OUTFILE 
+  echo -e "### Output difference from Python version" 
+  diff $OUTFILE data/output.txt
+  rm $OUTFILE
+done
+
