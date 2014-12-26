@@ -5,8 +5,6 @@
 #include <unordered_map>
 #include <vector>
 #include <algorithm>
-#include <cctype>
-#include <cstdio>
 #include <cstring>
 #include <regex>
 using namespace std;

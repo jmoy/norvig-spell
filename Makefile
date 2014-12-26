@@ -1,7 +1,7 @@
 EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_hs
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
 
-ALL: $(EXECUTABLES) README.md
+ALL: $(EXECUTABLES)
 .PHONY: ALL
 
 bin/norvig_py: python2/norvig.py
@@ -15,14 +15,17 @@ bin/norvig_hs: haskell/norvig.hs haskell/norvig.hs
 		&& cabal build
 	cp haskell/dist/build/norvig/norvig $@
 
-benchmarks/%.md: bin/% benchmark
-	./benchmark $< > $@
+benchmark: benchmarks/all.md
+.PHONY: benchmark
 
-README.md: Prelude.md $(BENCHMARKS)
-	cat Prelude.md $(BENCHMARKS) > $@
+benchmarks/all.md: $(BENCHMARKS)
+	cat $^ > $@
+benchmarks/%.md: bin/% util/mk_benchmark
+	util/mk_benchmark $< > $@
 
 clean:
 	cd haskell && cabal clean
-	rm -f $(EXECUTABLES) $(BENCHMARKS) README.md
+	cd cxx1y && make clean
+	rm -f $(EXECUTABLES) $(BENCHMARKS) benchmarks/all.md
 .PHONY: clean
 
