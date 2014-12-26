@@ -13,13 +13,13 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
     /usr/bin/time bin/norvig_py data/train.txt </dev/null
 
-0.70user 0.04system 0:00.76elapsed 97%CPU (0avgtext+0avgdata 75528maxresident)k
-0inputs+0outputs (0major+19105minor)pagefaults 0swaps
+0.69user 0.07system 0:00.77elapsed 98%CPU (0avgtext+0avgdata 75524maxresident)k
+0inputs+0outputs (0major+19101minor)pagefaults 0swaps
 
     /usr/bin/time bin/norvig_py data/train.txt <data/test.txt >OUTFILE
 
-33.63user 0.09system 0:33.97elapsed 99%CPU (0avgtext+0avgdata 75492maxresident)k
-0inputs+16outputs (0major+19104minor)pagefaults 0swaps
+33.09user 0.05system 0:33.36elapsed 99%CPU (0avgtext+0avgdata 75524maxresident)k
+0inputs+16outputs (0major+19102minor)pagefaults 0swaps
 
     diff -U0 OUTFILE data/output.txt|wc -l
 
@@ -29,13 +29,13 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
     /usr/bin/time bin/norvig_cc data/train.txt </dev/null
 
-0.79user 0.01system 0:00.81elapsed 98%CPU (0avgtext+0avgdata 18200maxresident)k
-0inputs+0outputs (0major+6045minor)pagefaults 0swaps
+0.79user 0.02system 0:00.82elapsed 98%CPU (0avgtext+0avgdata 18148maxresident)k
+0inputs+0outputs (0major+6044minor)pagefaults 0swaps
 
     /usr/bin/time bin/norvig_cc data/train.txt <data/test.txt >OUTFILE
 
-32.05user 2.72system 0:35.51elapsed 97%CPU (0avgtext+0avgdata 436504maxresident)k
-0inputs+24outputs (0major+845824minor)pagefaults 0swaps
+30.98user 2.81system 0:34.19elapsed 98%CPU (0avgtext+0avgdata 436520maxresident)k
+0inputs+16outputs (0major+845824minor)pagefaults 0swaps
 
     diff -U0 OUTFILE data/output.txt|wc -l
 
@@ -45,13 +45,13 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
     /usr/bin/time bin/norvig_hs data/train.txt </dev/null
 
-0.00user 0.00system 0:00.01elapsed 72%CPU (0avgtext+0avgdata 9972maxresident)k
-0inputs+0outputs (0major+1781minor)pagefaults 0swaps
+0.00user 0.00system 0:00.02elapsed 38%CPU (0avgtext+0avgdata 9916maxresident)k
+0inputs+0outputs (0major+1780minor)pagefaults 0swaps
 
     /usr/bin/time bin/norvig_hs data/train.txt <data/test.txt >OUTFILE
 
-28.47user 0.19system 0:28.79elapsed 99%CPU (0avgtext+0avgdata 95708maxresident)k
-0inputs+16outputs (0major+23260minor)pagefaults 0swaps
+28.46user 0.14system 0:28.80elapsed 99%CPU (0avgtext+0avgdata 95876maxresident)k
+0inputs+16outputs (0major+23264minor)pagefaults 0swaps
 
     diff -U0 OUTFILE data/output.txt|wc -l
 
