@@ -1,4 +1,4 @@
-EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_hs bin/norvig_c
+EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_hs bin/norvig_hs_trie bin/norvig_c 
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
 DATAFILES:=data/train.txt data/test.txt data/output.txt
 
@@ -10,11 +10,16 @@ bin/norvig_py: python2/norvig.py
 bin/norvig_cc: 
 	cd cxx1y && make
 	cp cxx1y/norvig $@
-bin/norvig_hs: haskell/norvig.hs haskell/norvig.hs
+bin/norvig_hs:
 	cd haskell \
 		&& cabal configure --enable-optimization=2\
 		&& cabal build
 	cp haskell/dist/build/norvig/norvig $@
+bin/norvig_hs_trie:
+	cd haskell-trie \
+		&& cabal configure --enable-optimization=2\
+		&& cabal build
+	cp haskell-trie/dist/build/norvig/norvig $@
 bin/norvig_c:
 	cd c && make
 	cp c/norvig $@
