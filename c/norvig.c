@@ -41,6 +41,12 @@ void updater(void *p,char *s,size_t len){
 }
 
 
+/* Take a 'word' of length 'len' and return
+   a corrected word. The return value might
+   be 'word' itself or a newly allocated string.
+   In the latter case the caller is responsible
+   for freeing it.
+*/
 char *correct(Trie *tp,char *word,size_t len)
 {
   MaxState ms;
