@@ -28,6 +28,6 @@ The folder `data/` has a training file `train.txt` and a test file `test.txt`. T
 
 On Linux running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
 
-For my setup the Python, C++ and Haskell HashMap version run in about the same time with the test data set. The C version is 100x faster than them and the Haskell Trie version is about 2x slower.
+For my setup the Python, C++ and Haskell HashMap version run in about the same time with the test data set. The C version is 13x faster than them and the Haskell Trie version is about 2x slower.
 
 Python and C++ are about 3x faster than Haskell HashMap when building the model.
