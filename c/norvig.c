@@ -82,8 +82,6 @@ int main(int argc,char*argv[])
     word[len]='\0';
     if (!len)
       continue;
-    for (size_t n=0;n<len;n++)
-      word[n] = tolower(word[n]);
     char *p = correct(mod,word,len);
     printf("%s, %s\n",word,p);
     if (p!=word)
