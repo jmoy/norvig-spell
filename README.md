@@ -41,7 +41,7 @@ The folder `data/` has a training file `train.txt` and a test file `test.txt`. T
 
 On Linux,running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
 
-A summary of the results on my setup is as follows
+This is what I get on my setup.
 
 Version              | Time (s) | Memory use (M)
 :--------------------|---------:|---------------:
