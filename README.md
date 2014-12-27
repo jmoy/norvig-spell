@@ -6,6 +6,7 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 * [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
 * [C++14](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
 * [Haskell](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs)
+* [C](https://github.com/jmoy/norvig-spell/tree/master/c)
 
 ## Building
 Running `make` at the top level will build all the programs and place them in `bin/`.
