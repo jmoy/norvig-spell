@@ -1,0 +1,4 @@
+[submodule "c_hat/hat-trie"]
+	path = c_hat/hat-trie
+	url = git@github.com:dcjones/hat-trie.git
+  ignore = dirty

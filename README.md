@@ -3,11 +3,10 @@ Implementations of [Norvig's spelling corrector](http://norvig.com/spell-correct
 Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy.net`
 
 ## Languages
-* [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
-* [C++14](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
-* [Haskell (using Data.HashMap)](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs)
-* [Haskell (using Data.Trie)](https://github.com/jmoy/norvig-spell/blob/master/haskell-trie/norvig.hs)
-* [C](https://github.com/jmoy/norvig-spell/tree/master/c)
+* [*Python*](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
+* [*C++14*](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
+* *Haskell*. [Using](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs) HashMap, [using](https://github.com/jmoy/norvig-spell/blob/master/haskell-trie/norvig.hs) Data.Trie.
+* [*C*] [Using](https://github.com/jmoy/norvig-spell/tree/master/c) my own trie implementation, [using](https://github.com/jmoy/norvig-spell/tree/master/c) [hat-trie](https://github.com/dcjones/hat-trie/).
 
 ## Building
 Running `make` at the top level will build all the programs and place them in `bin/`.
@@ -28,6 +27,6 @@ The folder `data/` has a training file `train.txt` and a test file `test.txt`. T
 
 On Linux running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
 
-For my setup the Python, C++ and Haskell HashMap version run in about the same time with the test data set. The C version is 13x faster than them and the Haskell Trie version is about 2x slower.
+For my setup the Python, C++ and Haskell HashMap version run in about the same time with the test data set. The C versionis are about 13x faster than them and the Haskell Trie version is about 2x slower.
 
 Python and C++ are about 3x faster than Haskell HashMap when building the model.
