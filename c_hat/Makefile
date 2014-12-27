@@ -1,5 +1,5 @@
-INCLUDEDIR+=hat-trie/src
-LIBDIR:=hat-trie/src/.libs
+INCLUDEDIR+=../hat-trie/src
+LIBDIR:=../hat-trie/src/.libs
 LDFLAGS+=-L$(LIBDIR)
 CFLAGS+=-O2 -Wall -std=c99 -I $(INCLUDEDIR)
 OBJECTS:=util.o norvig.o editor.o

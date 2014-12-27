@@ -1,6 +1,6 @@
-EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_hs bin/norvig_hs_trie bin/norvig_c bin/norvig_c_hat
+EXECUTABLES:=bin/norvig_py bin/norvig_cc bin/norvig_cc_hat bin/norvig_hs bin/norvig_hs_trie bin/norvig_c bin/norvig_c_hat 
 CABAL_MODULES:=haskell haskell-trie
-MAKE_MODULES:=cxx1y c c_hat
+MAKE_MODULES:=cxx1y cxx1y_hat c c_hat
 ALL_MODULES:=$(CABAL_MODULES) $(MAKE_MODULES)
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
 DATAFILES:=data/train.txt data/test.txt data/output.txt
@@ -21,6 +21,12 @@ $(OTHER_MODULES):
 
 bin/norvig_py: python2/norvig.py
 	cp -a $< $@
+
+bin/norvig_cc: cxx1y
+	cp -a cxx1y/norvig $@
+
+bin/norvig_cc_hat: cxx1y_hat
+	cp -a cxx1y_hat/norvig $@
 
 bin/norvig_cc: cxx1y
 	cp -a cxx1y/norvig $@

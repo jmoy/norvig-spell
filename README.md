@@ -4,20 +4,24 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
 ## Languages
 * [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
-* [C++14](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
+* C++14
+  + [undordered_map](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
+  + [hat-trie](https://github.com/jmoy/norvig-spell/blob/master/cxx1y_hat/norvig.cc)
 * Haskell 
   + [HashMap](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs) 
   + [Trie](https://github.com/jmoy/norvig-spell/blob/master/haskell-trie/norvig.hs) 
 * C 
   + [Naive trie](https://github.com/jmoy/norvig-spell/tree/master/c) 
-  + [hat-trie](https://github.com/jmoy/norvig-spell/tree/master/c_hat) (uses [library](https://github.com/dcjones/hat-trie/) by dcjones).
+  + [hat-trie](https://github.com/jmoy/norvig-spell/tree/master/c_hat) 
+  
+`hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
 
 ## Building
 The `hat-trie` library is included as a submodule. Doing 
 
     git submodule init
     git submodule update
-    bash -c 'cd c_hat/hat-trie && autoreconf -i && ./configure && make'
+    bash -c 'cd hat-trie && autoreconf -i && ./configure && make'
 
 will build it. 
 
@@ -46,7 +50,8 @@ This is what I get on my setup.
 Version              | Time (s) | Memory use (M)
 :--------------------|---------:|---------------:
 Python               | 12.6     | 75.5
-C++                  | 11.6     | 58.8
+C++ (unordered_map)  | 11.6     | 58.8
+C++ (hat-trie)       |  9.1     | 56.4
 Haskell (HashMap)    | 11.5     | 81.3
 Haskell (Trie)       | 22.3     |157.0
 C (naive trie)       |  0.7     |160.4
