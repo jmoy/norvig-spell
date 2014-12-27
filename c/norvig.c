@@ -18,6 +18,12 @@ struct maxstate
 };
 
 typedef struct maxstate MaxState;
+
+/* 'update' allows us to use 'MaxState'
+   as an accumulator, keeping track of the word
+   with the maximum count as per the associated
+   Trie.
+*/
 void update(MaxState *ms,char *t)
 {
   long val = lookup(ms->tp,t);
@@ -29,6 +35,7 @@ void update(MaxState *ms,char *t)
   }
 }
 
+/* To be passed as a callback to 'edits1'*/
 void updater(void *p,char *s,size_t len){
   update(p,s);
 }

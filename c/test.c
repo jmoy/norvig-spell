@@ -2,6 +2,8 @@
 #include "trie.h"
 #include "editor.h"
 
+/* Some simple tests*/
+
 void check_expect(char *testname,int result)
 {
   printf("%s: %s\n",
