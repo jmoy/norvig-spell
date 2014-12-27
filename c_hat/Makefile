@@ -7,11 +7,7 @@ OBJECTS:=util.o norvig.o editor.o
 ALL: norvig
 .PHONY: ALL
 
-hat-trie:
-	make -C hat-trie
-.PHONY: hat-trie
-
-norvig: $(OBJECTS) hat-trie
+norvig: $(OBJECTS)
 	$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(LDFLAGS) -lhat-trie
 
 editor.o: editor.c editor.h util.h

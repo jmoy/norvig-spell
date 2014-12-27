@@ -13,7 +13,17 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
   + [hat-trie](https://github.com/jmoy/norvig-spell/tree/master/c_hat) (uses [library](https://github.com/dcjones/hat-trie/) by dcjones).
 
 ## Building
-Running `make` at the top level will build all the programs and place them in `bin/`.
+The `hat-trie` library is included as a submodule. Doing 
+
+    git submodule init
+    git submodule update
+    cd c_hat/hat-trie && autoreconf -i && .configure && make
+
+will build it. 
+
+The Haskell programs depend on the `bytestring`, `bytestring-trie` and `unordered-containers` packages.
+
+Once you have all the dependencies, running `make` at the top level will build all the programs and place them in `bin/`.
 
 Each program can be run as
 
@@ -29,8 +39,16 @@ The folder `data/` has a training file `train.txt` and a test file `test.txt`. T
 
 ## Performance
 
-On Linux running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
+On Linux,running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
 
-For my setup the Python, C++ and Haskell HashMap version run in about the same time with the test data set. The C versionis are about 13x faster than them and the Haskell Trie version is about 2x slower.
+A summary of the results on my setup is as follows
 
-Python and C++ are about 3x faster than Haskell HashMap when building the model.
+Version              | Time (s) | Memory use (M)
+:--------------------|---------:|---------------:
+Python               | 12.6     | 75.5
+C++                  | 11.6     | 58.8
+Haskell (HashMap)    | 11.5     | 81.3
+Haskell (Trie)       | 22.3     |157.0
+C (naive trie)       |  0.7     |160.4
+C (hat-trie)         |  3.0     |  2.3
+

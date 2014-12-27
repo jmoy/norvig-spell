@@ -34,8 +34,8 @@ bin/norvig_hs_trie: haskell-trie
 bin/norvig_c: c
 	cp -a c/norvig $@
 
-bin/norvig_c_hat: c
-	cp -a c/norvig $@
+bin/norvig_c_hat: c_hat
+	cp -a c_hat/norvig $@
 
 benchmark: benchmarks/all.md
 .PHONY: benchmark
