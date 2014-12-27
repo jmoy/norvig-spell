@@ -5,7 +5,7 @@ ALL_MODULES:=$(CABAL_MODULES) $(MAKE_MODULES)
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
 DATAFILES:=data/train.txt data/test.txt data/output.txt
 
-ALL: $(ALL_MODULES) $(EXECUTABLES)
+ALL: $(EXECUTABLES)
 
 $(MAKE_MODULES):
 	$(MAKE) -C $@
@@ -20,16 +20,19 @@ $(OTHER_MODULES):
 .PHONY: ALL $(ALL_MODULES)
 
 bin/norvig_py: python2/norvig.py
-	cp $< $@
-bin/norvig_cc: cxx1y/norvig
-	cp $< $@
-bin/norvig_hs: haskell/dist/build/norvig/norvig
-	cp $< $@
-bin/norvig_hs_trie: haskell-trie/dist/build/norvig/norvig
-	cp $< $@
-bin/norvig_c: c/norvig
-	cp $< $@
+	cp -a $< $@
 
+bin/norvig_cc: cxx1y
+	cp -a cxx1y/norvig $@
+
+bin/norvig_hs: haskell
+	cp -a haskell/dist/build/norvig/norvig $@
+
+bin/norvig_hs_trie: haskell-trie
+	cp -a haskell-trie/dist/build/norvig/norvig $@
+
+bin/norvig_c: c
+	cp -a c/norvig $@
 
 benchmark: benchmarks/all.md
 .PHONY: benchmark
@@ -41,7 +44,7 @@ benchmarks/%.md: bin/% util/mk_benchmark $(DATAFILES)
 
 clean:
 	for dir in $(CABAL_MODULES); do\
-		cd $$dir && cabal clean;\
+		cd $(CURDIR)/$$dir && cabal clean;\
 	done
 	for dir in $(MAKE_MODULES); do\
 		$(MAKE) -C $$dir clean;\
