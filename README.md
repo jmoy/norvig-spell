@@ -17,7 +17,7 @@ The `hat-trie` library is included as a submodule. Doing
 
     git submodule init
     git submodule update
-    cd c_hat/hat-trie && autoreconf -i && .configure && make
+    bash -c 'cd c_hat/hat-trie && autoreconf -i && ./configure && make'
 
 will build it. 
 
