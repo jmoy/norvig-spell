@@ -5,7 +5,6 @@
 
 #include "util.h"
 #include "trie.h"
-#include "editor.h"
 
 #define MAXWORD 100
 
