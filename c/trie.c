@@ -15,22 +15,22 @@ Trie *mk_trie()
   return p;
 }
 
-void increment(Trie *tp,const unsigned char *s)
+void increment(Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s]==NULL)
-      tp->child[*s] = mk_trie();
-    tp = tp->child[*s];
+    if (tp->child[*s-'\0']==NULL)
+      tp->child[*s-'\0'] = mk_trie();
+    tp = tp->child[*s-'\0'];
   }
   tp->count++;
 }
 
-long lookup(const Trie *tp,const unsigned char *s)
+long lookup(const Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s]==NULL)
+    if (tp->child[*s-'\0']==NULL)
       return 0;
-    tp = tp->child[*s];
+    tp = tp->child[*s-'\0'];
   }
   return tp->count;
 }
@@ -39,7 +39,7 @@ Trie *train(FILE *fp)
 {
   int c='.';
   int i;
-  unsigned char wrd[MAXWORD+1];
+  char wrd[MAXWORD+1];
   Trie *tp=mk_trie();
 
   while (c!=EOF){

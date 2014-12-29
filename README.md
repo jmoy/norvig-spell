@@ -55,7 +55,7 @@ C++ (unordered_map)     | 11.6     | 58.8
 C++ (hat-trie)          |  9.1     | 56.4
 Haskell (HashMap)       | 11.5     | 81.3
 Haskell (Trie)          | 22.3     |157.0
-C (naive trie)          |  0.8     |160.4
+C (naive trie)          |  0.7     |160.4
 C (hat-trie)            |  3.0     |  2.3
 C (dynamic programming) |  0.3     |162.7
 

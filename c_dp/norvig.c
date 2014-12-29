@@ -5,6 +5,7 @@
 
 #include "util.h"
 #include "trie.h"
+#include "editor.h"
 
 #define MAXWORD 100
 
@@ -34,7 +35,7 @@ void updater(void *state,Trie *tp){
    In the latter case the caller is responsible
    for freeing it.
 */
-unsigned char *correct(Trie *tp,unsigned char *word)
+char *correct(Trie *tp,char *word)
 {
   MaxState ms;
   if (lookup(tp,word))
@@ -67,7 +68,7 @@ int main(int argc,char*argv[])
   Trie *mod=train(fp);
   fclose(fp);
   
-  unsigned char word[MAXWORD+1];
+  char word[MAXWORD+1];
   while (!feof(stdin)){
     int c;
     int len=0;
@@ -82,7 +83,7 @@ int main(int argc,char*argv[])
     word[len]='\0';
     if (!len)
       continue;
-    unsigned char *p = correct(mod,word);
+    char *p = correct(mod,word);
     printf("%s, %s\n",word,p);
     if (p!=word)
       free(p);

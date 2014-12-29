@@ -1,12 +1,10 @@
 #ifndef __JMOY_TRIE__
 #define __JMOY_TRIE__
 
-#include <limits.h>
 /* A simple trie implementation to hold frequency counts*/
-#define JTRIE_MAX_CHILD (UCHAR_MAX+1)
 struct trie {
   long count;
-  struct trie *child[JTRIE_MAX_CHILD];
+  struct trie *child[256];
 };
 
 typedef struct trie Trie;
@@ -19,16 +17,16 @@ Trie *mk_trie();
 /* Increment the count of 's', or insert 1
    if it does not alreay exist.
 */
-void increment(Trie *tp,const unsigned char *s);
+void increment(Trie *tp,const char *s);
 
 /* Lookup 's' in the trie and return its count.
    Return 0 if 's' is not in trie.
 */
-long lookup(const Trie *tp,const unsigned char *s);
+long lookup(const Trie *tp,const char *s);
 
 /* Return a trie holding the frequence of words in 
    'fp'. A word is a maximal string of alphabetic
-   unsigned characters (as per isalpha).
+   characters (as per isalpha).
 */
 Trie *train(FILE *fp);
 

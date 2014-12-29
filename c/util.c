@@ -14,12 +14,14 @@ void *nv_alloc(size_t sz)
   return p;
 }
 
-unsigned char *nv_dup(const unsigned char *s,size_t len)
+char *nv_dup(const char *s)
 {
-  unsigned char *t;
+  size_t len;
+  char *t;
 
+  len = strlen(s);
   t = nv_alloc(len+1);
-  memcpy(t,s,len+1);
+  strcpy(t,s);
   return t;
 }
   

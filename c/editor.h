@@ -1,7 +1,7 @@
 #ifndef __JMOY_EDITOR__
 #define __JMOY_EDITOR__
 
-typedef void (*Callback)(void * state,unsigned char *s,size_t len);
+typedef void (*Callback)(void * state,char *s,size_t len);
 
 /*
 'edits1' generates all strings obtainable by a single letter edit
@@ -13,13 +13,13 @@ The string passed to 'f' is owned by 'edits1'.
 'f' must make a copy if it wants to hold on to it
 */
 
-void edits1(const unsigned char *word,size_t len,Callback f,void *state);
+void edits1(const char *word,size_t len,Callback f,void *state);
 
 /*'edits2' has the same interface as 'edits1' by generates all
 two-letter edits by calling 'edits1' recursively.
 */
 
-void edits2(const unsigned char *word,size_t len,Callback f,void *state);
+void edits2(const char *word,size_t len,Callback f,void *state);
  
 
 #endif

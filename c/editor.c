@@ -4,14 +4,14 @@
 #include "util.h"
 #include "editor.h"
 
-static const unsigned char alphabet[]="abcdefghijklmnopqrstuvwxyz";
+static const char alphabet[]="abcdefghijklmnopqrstuvwxyz";
 static const size_t NLETTERS = sizeof(alphabet)-1;
 
 /*
 deletes, inserts, replaces, trasposes, edits1 and edits2
 all have the same prototype
 
-void f(const unsigned char *s, size_t len, Callback cb, void *st)
+void f(const char *s, size_t len, Callback cb, void *st)
 
 where 's' is assumed to be a string of length 'len'.
 
@@ -29,9 +29,9 @@ component transformations of 'edits1' and have the same interface.
 by calling edits1 recursively.
 */
 
-static void deletes(const unsigned char *s, size_t len,Callback f,void *st)
+static void deletes(const char *s, size_t len,Callback f,void *st)
 {
-  unsigned char *t=nv_alloc(len);
+  char *t=nv_alloc(len);
   for (size_t n=0;n<len;++n){
     for (size_t i=0;i<n;i++)
       t[i]=s[i];
@@ -42,9 +42,9 @@ static void deletes(const unsigned char *s, size_t len,Callback f,void *st)
   free(t);
 }
 
-static void inserts(const unsigned char *s, size_t len, Callback f,void *st)
+static void inserts(const char *s, size_t len, Callback f,void *st)
 {
-  unsigned char *t=nv_alloc(len+2);
+  char *t=nv_alloc(len+2);
   for (size_t n=0;n<=len;++n){
     for (size_t i=0;i<n;i++)
       t[i]=s[i];
@@ -58,10 +58,10 @@ static void inserts(const unsigned char *s, size_t len, Callback f,void *st)
   free(t);
 }
 
-static void replaces(const unsigned char *s, size_t len, Callback f,void *st)
+static void replaces(const char *s, size_t len, Callback f,void *st)
 {
-  unsigned char *t=nv_alloc(len+1);
-  memcpy(t,s,len+1);
+  char *t=nv_alloc(len+1);
+  strcpy(t,s);
   for (size_t n=0;n<len;++n){
     for (size_t i=0;i<NLETTERS;i++){
       t[n] = alphabet[i];
@@ -72,12 +72,12 @@ static void replaces(const unsigned char *s, size_t len, Callback f,void *st)
   free(t);
 }
 
-static void transposes(const unsigned char *s, size_t len, Callback f,void *st)
+static void transposes(const char *s, size_t len, Callback f,void *st)
 {
-  unsigned char *t=nv_alloc(len+1);
-  memcpy(t,s,len+1);
+  char *t=nv_alloc(len+1);
+  strcpy(t,s);
   for (size_t n=0;n<len-1;++n){
-    unsigned char c = t[n];
+    char c = t[n];
     t[n] = t[n+1];
     t[n+1] = c;
     f(st,t,len);
@@ -89,7 +89,7 @@ static void transposes(const unsigned char *s, size_t len, Callback f,void *st)
 }
 
 
-void edits1(const unsigned char *word,size_t len,Callback f,void *st)
+void edits1(const char *word,size_t len,Callback f,void *st)
 {
   deletes(word,len,f,st);
   replaces(word,len,f,st);
@@ -110,12 +110,12 @@ struct twostate
   void *st;
 };
 
-static void editer2(void *p,unsigned char *s,size_t len){
+static void editer2(void *p,char *s,size_t len){
   struct twostate *pp = p;
   edits1(s,len,pp->f,pp->st);
 }
 
-void edits2(const unsigned char *word,size_t len,Callback f,void *st){
+void edits2(const char *word,size_t len,Callback f,void *st){
   struct twostate s2 = {f,st};
   edits1(word,len,editer2,&s2);
 }
