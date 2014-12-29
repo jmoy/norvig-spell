@@ -13,6 +13,7 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 * C 
   + [Naive trie](https://github.com/jmoy/norvig-spell/tree/master/c) 
   + [hat-trie](https://github.com/jmoy/norvig-spell/tree/master/c_hat) 
+  + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
   
 `hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
 
@@ -47,13 +48,15 @@ On Linux,running `make benchmark` creates a file `benchmarks/all.md` containing 
 
 This is what I get on my setup.
 
-Version              | Time (s) | Memory use (M)
-:--------------------|---------:|---------------:
-Python               | 12.6     | 75.5
-C++ (unordered_map)  | 11.6     | 58.8
-C++ (hat-trie)       |  9.1     | 56.4
-Haskell (HashMap)    | 11.5     | 81.3
-Haskell (Trie)       | 22.3     |157.0
-C (naive trie)       |  0.7     |160.4
-C (hat-trie)         |  3.0     |  2.3
+Version                 | Time (s) | Memory use (M)
+:-----------------------|---------:|---------------:
+Python                  | 12.6     | 75.5
+C++ (unordered_map)     | 11.6     | 58.8
+C++ (hat-trie)          |  9.1     | 56.4
+Haskell (HashMap)       | 11.5     | 81.3
+Haskell (Trie)          | 22.3     |157.0
+C (naive trie)          |  0.7     |160.4
+C (hat-trie)            |  3.0     |  2.3
+C (dynamic programming) |  0.3     |162.7
+
 
