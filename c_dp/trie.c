@@ -67,7 +67,7 @@ void visit_neighbours(Trie *tp,char *s,int maxedit,
 
   /*Replace*/
   for (int i=0;i<256;i++){
-    if (tp->child[i]!=NULL)
+    if (i!=(*s-'\0') && tp->child[i]!=NULL)
       visit_neighbours(tp->child[i],s+1,maxedit-1,f,state);
   }
 
