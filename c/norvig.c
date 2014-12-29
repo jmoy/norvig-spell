@@ -14,7 +14,7 @@ struct maxstate
 {
   Trie *tp;
   long max;
-  char *maxs;
+  unsigned char *maxs;
 };
 
 typedef struct maxstate MaxState;
@@ -24,20 +24,20 @@ typedef struct maxstate MaxState;
    with the maximum count as per the associated
    Trie.
 */
-void update(MaxState *ms,char *t)
+void update(MaxState *ms,unsigned char *t,size_t len)
 {
   long val = lookup(ms->tp,t);
   if (val>ms->max){
     if (ms->maxs!=NULL)
       free(ms->maxs);
     ms->max = val;
-    ms->maxs = nv_dup(t);
+    ms->maxs = nv_dup(t,len);
   }
 }
 
 /* To be passed as a callback to 'edits1'*/
-void updater(void *p,char *s,size_t len){
-  update(p,s);
+void updater(void *p,unsigned char *s,size_t len){
+  update(p,s,len);
 }
 
 
@@ -47,7 +47,7 @@ void updater(void *p,char *s,size_t len){
    In the latter case the caller is responsible
    for freeing it.
 */
-char *correct(Trie *tp,char *word,size_t len)
+unsigned char *correct(Trie *tp,unsigned char *word,size_t len)
 {
   MaxState ms;
   if (lookup(tp,word))
@@ -80,7 +80,7 @@ int main(int argc,char*argv[])
   Trie *mod=train(fp);
   fclose(fp);
   
-  char word[MAXWORD+1];
+  unsigned char word[MAXWORD+1];
   while (!feof(stdin)){
     int c;
     int len=0;
@@ -95,7 +95,7 @@ int main(int argc,char*argv[])
     word[len]='\0';
     if (!len)
       continue;
-    char *p = correct(mod,word,len);
+    unsigned char *p = correct(mod,word,len);
     printf("%s, %s\n",word,p);
     if (p!=word)
       free(p);

@@ -5,5 +5,5 @@
 void *nv_alloc(size_t);
 
 /* strdup */
-char *nv_dup(const char *);
+unsigned char *nv_dup(const unsigned char *,size_t);
 #endif

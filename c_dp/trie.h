@@ -1,12 +1,15 @@
 #ifndef __JMOY_TRIE__
 #define __JMOY_TRIE__
 
+#include <limits.h>
+
+#define JTRIE_MAX_CHILD (UCHAR_MAX+1)
 /* A simple trie implementation to hold frequency counts*/
 struct trie {
   long count;
   long depth;
-  char c;
-  struct trie *child[256];
+  unsigned char c;
+  struct trie *child[JTRIE_MAX_CHILD];
   struct trie *prev;
 };
 
@@ -22,26 +25,26 @@ Trie *mk_trie();
 /* Increment the count of 's', or insert 1
    if it does not alreay exist.
 */
-void increment(Trie *tp,const char *s);
+void increment(Trie *tp,const unsigned char *s);
 
 /* Get the key corresponding to a trie node
    The key is stored in a malloced array
    which the caller must free*/
-char *get_key(Trie *tp);
+unsigned char *get_key(Trie *tp);
 
 /* Visit all words in trie at most 'maxedit' edits
    away from 's'. At each of those words call the
    given callback 'f' with the address of the node 
    and state
 */
-void visit_neighbours(Trie *tp,char *s,int maxedit,
+void visit_neighbours(Trie *tp,unsigned char *s,int maxedit,
                       callback_t f,void *state);
 
 
 /* Lookup 's' in the trie and return its count.
    Return 0 if 's' is not in trie.
 */
-long lookup(const Trie *tp,const char *s);
+long lookup(const Trie *tp,const unsigned char *s);
 
 /* Return a trie holding the frequence of words in 
    'fp'. A word is a maximal string of alphabetic

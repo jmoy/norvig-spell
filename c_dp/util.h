@@ -4,6 +4,4 @@
 /* A checked malloc. exit(1) on failure */
 void *nv_alloc(size_t);
 
-/* strdup */
-char *nv_dup(const char *);
 #endif
