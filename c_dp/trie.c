@@ -14,6 +14,8 @@ static inline size_t IX(const char c)
   return c-CHAR_MIN;
 }
 
+extern inline long get_value(Trie *);
+
 Trie *mk_trie()
 {
   Trie *p = nv_alloc(sizeof(Trie));

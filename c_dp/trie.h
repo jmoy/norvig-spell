@@ -33,6 +33,9 @@ void increment(Trie *tp,const char *s);
    which the caller must free*/
 char *get_key(Trie *tp);
 
+/* Get the value stored in a trie node*/
+inline long get_value(Trie *tp) {return tp->count;}
+
 /* Visit all words in trie at most 'maxedit' edits
    away from 's'. At each of those words call the
    given callback 'f' with the address of the node 

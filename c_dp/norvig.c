@@ -21,8 +21,9 @@ typedef struct maxstate MaxState;
 /* To be passed as a callback to 'visit_neighbours'*/
 void updater(void *state,Trie *tp){
   MaxState *ms = state;
-  if (tp->count > ms->max){
-    ms->max = tp->count;
+  long count = get_value(tp);
+  if (count > ms->max){
+    ms->max = count;
     ms->maxarg = tp;
   }
 }
