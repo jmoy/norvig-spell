@@ -2,11 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <limits.h>
 
 #include "trie.h"
 #include "util.h"
 
 #define MAXWORD 100
+
+static inline size_t IX(const char c)
+{
+  return c-CHAR_MIN;
+}
 
 Trie *mk_trie()
 {
@@ -18,14 +24,14 @@ Trie *mk_trie()
 void increment(Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s-'\0']==NULL){
+    if (tp->child[IX(*s)]==NULL){
       Trie *nxt = mk_trie();
       nxt->depth = tp->depth+1;
       nxt->c = *s;
       nxt->prev = tp;
-      tp->child[*s-'\0'] = nxt;
+      tp->child[IX(*s)] = nxt;
     }
-    tp = tp->child[*s-'\0'];
+    tp = tp->child[IX(*s)];
   }
   tp->count++;
 }
@@ -49,14 +55,14 @@ void visit_neighbours(Trie *tp,char *s,int maxedit,
   /*No edit*/
   if (!*s && tp->count)
     f(state,tp);
-  else if (tp->child[*s-'\0']!=NULL)
-    visit_neighbours(tp->child[*s-'\0'],s+1,maxedit,f,state);
+  else if (tp->child[IX(*s)]!=NULL)
+    visit_neighbours(tp->child[IX(*s)],s+1,maxedit,f,state);
   
   if (maxedit<1)
     return;
 
   /*Insert*/
-  for (int i=0;i<256;i++){
+  for (int i=0;i<JTRIE_NUM_CHILD;i++){
     if (tp->child[i]!=NULL)
       visit_neighbours(tp->child[i],s,maxedit-1,f,state);
   }
@@ -66,8 +72,8 @@ void visit_neighbours(Trie *tp,char *s,int maxedit,
     return;
 
   /*Replace*/
-  for (int i=0;i<256;i++){
-    if (i!=(*s-'\0') && tp->child[i]!=NULL)
+  for (int i=0;i<JTRIE_NUM_CHILD;i++){
+    if (i!=IX(*s) && tp->child[i]!=NULL)
       visit_neighbours(tp->child[i],s+1,maxedit-1,f,state);
   }
 
@@ -76,10 +82,10 @@ void visit_neighbours(Trie *tp,char *s,int maxedit,
 
   /*Transpose*/
   char c = s[1];
-  if ((!c) || tp->child[c-'\0']==NULL)
+  if ((!c) || tp->child[IX(c)]==NULL)
     return;
   s[1]=s[0];
-  visit_neighbours(tp->child[c-'\0'],s+1,maxedit-1,f,state);
+  visit_neighbours(tp->child[IX(c)],s+1,maxedit-1,f,state);
   s[1]=c;
   return;
 }
@@ -87,9 +93,9 @@ void visit_neighbours(Trie *tp,char *s,int maxedit,
 long lookup(const Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s-'\0']==NULL)
+    if (tp->child[IX(*s)]==NULL)
       return 0;
-    tp = tp->child[*s-'\0'];
+    tp = tp->child[IX(*s)];
   }
   return tp->count;
 }

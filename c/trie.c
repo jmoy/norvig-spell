@@ -8,6 +8,10 @@
 
 #define MAXWORD 100
 
+static inline size_t IX(const char c){
+  return c-CHAR_MIN;
+} 
+
 Trie *mk_trie()
 {
   Trie *p = nv_alloc(sizeof(Trie));
@@ -18,9 +22,9 @@ Trie *mk_trie()
 void increment(Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s-'\0']==NULL)
-      tp->child[*s-'\0'] = mk_trie();
-    tp = tp->child[*s-'\0'];
+    if (tp->child[IX(*s)]==NULL)
+      tp->child[IX(*s)] = mk_trie();
+    tp = tp->child[IX(*s)];
   }
   tp->count++;
 }
@@ -28,9 +32,9 @@ void increment(Trie *tp,const char *s)
 long lookup(const Trie *tp,const char *s)
 {
   for (;*s;s++){
-    if (tp->child[*s-'\0']==NULL)
+    if (tp->child[IX(*s)]==NULL)
       return 0;
-    tp = tp->child[*s-'\0'];
+    tp = tp->child[IX(*s)];
   }
   return tp->count;
 }

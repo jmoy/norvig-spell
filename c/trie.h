@@ -1,10 +1,13 @@
 #ifndef __JMOY_TRIE__
 #define __JMOY_TRIE__
+#include <limits.h>
 
 /* A simple trie implementation to hold frequency counts*/
+
+#define JTRIE_NUM_CHILD (CHAR_MAX-CHAR_MIN+1)
 struct trie {
   long count;
-  struct trie *child[256];
+  struct trie *child[JTRIE_NUM_CHILD];
 };
 
 typedef struct trie Trie;
