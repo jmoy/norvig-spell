@@ -48,7 +48,7 @@ The different implementations use different algorithms and code organization, so
 
 This is what I get on my setup.
 
-Version                 | Time (s) | Memory use (Max resident,M)
+Version                 | Time (s) | Memory use<br/>(Max resident,M)
 :-----------------------|---------:|----------------------------:
 Python                  | 12.6     | 75.5
 C++ (unordered_map)     |  6.0     |  5.6
