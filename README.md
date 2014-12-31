@@ -4,16 +4,14 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
 ## Languages
 * [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
-* C++14
-  + [undordered_map](https://github.com/jmoy/norvig-spell/blob/master/cxx1y/norvig.cc)
-  + [hat-trie](https://github.com/jmoy/norvig-spell/blob/master/cxx1y_hat/norvig.cc)
+* C++14 ([common header]((https://github.com/jmoy/norvig-spell/blob/master/cxx-common/norvig.h))
+  + [undordered_map](https://github.com/jmoy/norvig-spell/blob/master/cxx_umap/norvig.cc)
+  + [hat-trie](https://github.com/jmoy/norvig-spell/blob/master/cxx_hat/norvig.cc)
 * Haskell 
   + [HashMap](https://github.com/jmoy/norvig-spell/blob/master/haskell/norvig.hs) 
   + [Trie](https://github.com/jmoy/norvig-spell/blob/master/haskell-trie/norvig.hs) 
 * C 
-  + [Naive trie](https://github.com/jmoy/norvig-spell/tree/master/c) 
-  + [hat-trie](https://github.com/jmoy/norvig-spell/tree/master/c_hat) 
-  + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
+ + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
   
 `hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
 
@@ -46,17 +44,17 @@ The folder `data/` has a training file `train.txt` and a test file `test.txt`. T
 
 On Linux,running `make benchmark` creates a file `benchmarks/all.md` containing performance results.
 
+The different implementations use different algorithms and code organization, so the benchmarks are not in any sense a comparison of the different languages.
+
 This is what I get on my setup.
 
-Version                 | Time (s) | Memory use (M)
-:-----------------------|---------:|---------------:
+Version                 | Time (s) | Memory use (Max resident,M)
+:-----------------------|---------:|----------------------------:
 Python                  | 12.6     | 75.5
-C++ (unordered_map)     | 11.6     | 58.8
-C++ (hat-trie)          |  9.1     | 56.4
+C++ (unordered_map)     |  6.0     |  5.6
+C++ (hat-trie)          |  3.5     |  3.6
 Haskell (HashMap)       | 11.5     | 81.3
 Haskell (Trie)          | 22.3     |157.0
-C (naive trie)          |  0.8     |160.4
-C (hat-trie)            |  3.0     |  2.3
 C (dynamic programming) |  0.3     |162.7
 
 
