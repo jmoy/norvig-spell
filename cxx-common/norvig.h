@@ -7,6 +7,10 @@ using namespace std;
 
 const string alphabet="abcdefghijklmnopqrstuvwxyz";
 
+/*
+  Editing functions. With each edit found they call the
+  provided function object 'f'.
+*/
 template<class FO> void deletes(const string&word, FO &f)
 {
   for (auto n=0;n<word.length();++n){
@@ -62,14 +66,11 @@ template<class FO> void edits1(const string &word,FO &f)
   inserts(word,f);
 }
 
-template<class Freq> class Norvig {
-  Freq freq;
-public:
-  void train(istream &s);
-  string correct(const string &);
-  int main(int argc,char *argv[]);
-};
-
+/*
+  Function object, parametrised over the type of a frequency table.
+  For the words with which it has been called it keeps track of the 
+  one with the maximum frequency in the table.
+*/
 template<class Freq> struct MaxState
 {
   Freq &m;
@@ -85,6 +86,11 @@ template<class Freq> struct MaxState
   }
 };
 
+/*
+  Function object that calls 'edits1' with an inner function
+  object it has been initialized with.
+  We use it to visit words at edit distance 2.
+*/
 template<class T> class TwoState
 {
   T &inner;
@@ -93,6 +99,31 @@ public:
   void operator()(const string &s) {edits1(s,inner);}
 };
 
+/*
+  The main class.
+  It is parametrised over the type of frequency table.
+  It expects the table to provide two public methods
+
+    void update(const string &s) 
+
+  which adds 1 to the observed frequency of 's', and
+
+    unsigned long lookup(const string &s)
+
+  which returns the observed frequency of 's'.
+*/
+template<class Freq> class Norvig {
+  Freq freq;
+public:
+  void train(istream &s);
+  string correct(const string &);
+  int main(int argc,char *argv[]);
+};
+
+/*
+  Given a word return its correction. Return the word
+  itself if no correction is found.
+*/
 template<class F>
 string Norvig<F>::correct(const string &word)
 {
@@ -109,6 +140,9 @@ string Norvig<F>::correct(const string &word)
   return word;
 }
 
+/*
+  Train the model based on word frequencies in the given file
+*/
 template<class F>
 void Norvig<F>::train(istream &fs)
 {
@@ -125,6 +159,13 @@ void Norvig<F>::train(istream &fs)
   }
 }
 
+/*
+  Train the model from 'argv[1].
+  Then read one word per line from standard input and
+  print lines of the form
+
+    [word], [correction]
+*/
 template<class F>
 int Norvig<F>::main(int argc,char*argv[])
 {
