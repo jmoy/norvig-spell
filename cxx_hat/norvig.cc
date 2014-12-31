@@ -1,3 +1,6 @@
+#include <string>
+using namespace std;
+
 #include "hat-trie.h"
 #include "norvig.h"
 
