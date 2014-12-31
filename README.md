@@ -48,13 +48,13 @@ The different implementations use different algorithms and code organization, so
 
 This is what I get on my setup.
 
-Version                 | Time (s) | Memory use<br/>(Max resident,M)
-:-----------------------|---------:|----------------------------:
-Python                  | 12.6     | 75.5
-C++ (unordered_map)     |  6.0     |  5.6
-C++ (hat-trie)          |  3.5     |  3.6
-Haskell (HashMap)       | 11.5     | 81.3
-Haskell (Trie)          | 22.3     |157.0
-C (dynamic programming) |  0.3     |162.7
+Version                 | Time (s) | Memory use<br/>(Max resident,M)|Lines of code
+:-----------------------|---------:|--------------------------------:------------:
+Python                  | 12.6     | 75.5                           | 31
+C++ (unordered_map)     |  6.0     |  5.6                           |165
+C++ (hat-trie)          |  3.5     |  3.6                           |166
+Haskell (HashMap)       | 11.5     | 81.3                           | 60
+Haskell (Trie)          | 22.3     |157.0                           | 61
+C (dynamic programming) |  0.3     |162.7                           |225
 
 
