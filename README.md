@@ -4,7 +4,7 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
 
 ## Languages
 * [Python](https://github.com/jmoy/norvig-spell/blob/master/python2/norvig.py) (minor modification of Norvig's original program)
-* C++14 ([common header]((https://github.com/jmoy/norvig-spell/blob/master/cxx-common/norvig.h))
+* C++14 ([common header](https://github.com/jmoy/norvig-spell/blob/master/cxx-common/norvig.h))
   + [undordered_map](https://github.com/jmoy/norvig-spell/blob/master/cxx_umap/norvig.cc)
   + [hat-trie](https://github.com/jmoy/norvig-spell/blob/master/cxx_hat/norvig.cc)
 * Haskell 
