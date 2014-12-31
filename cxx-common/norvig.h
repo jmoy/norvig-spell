@@ -187,8 +187,7 @@ int Norvig<F>::main(int argc,char*argv[])
   fs.close();
   
   string word;
-  while (cin){
-    getline(cin,word);
+  while (getline(cin,word)){
     if (word.empty())
       continue;
     for (size_t n=0;n<word.length();n++)
