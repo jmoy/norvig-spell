@@ -1,4 +1,4 @@
-EXECUTABLES:=bin/norvig_py bin/norvig_cc_umap bin/norvig_cc_hat bin/norvig_hs bin/norvig_hs_trie bin/norvig_c_dp
+EXECUTABLES:=bin/norvig_py bin/norvig_cc_umap bin/norvig_cc_hat bin/norvig_hs bin/norvig_hs_trie bin/norvig_c_dp bin/norvig_rkt
 CABAL_MODULES:=haskell haskell-trie
 MAKE_MODULES:=cxx_umap cxx_hat c_dp
 ALL_MODULES:=$(CABAL_MODULES) $(MAKE_MODULES)
@@ -20,6 +20,9 @@ $(OTHER_MODULES):
 .PHONY: ALL $(ALL_MODULES)
 
 bin/norvig_py: python2/norvig.py
+	cp -a $< $@
+
+bin/norvig_rkt: racket/norvig.rkt
 	cp -a $< $@
 
 bin/norvig_cc_umap: cxx_umap

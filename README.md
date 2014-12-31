@@ -12,7 +12,9 @@ Author: [Jyotirmoy Bhattacharya](http://www.jyotirmoy.net), `jyotirmoy@jyotirmoy
   + [Trie](https://github.com/jmoy/norvig-spell/blob/master/haskell-trie/norvig.hs) 
 * C 
  + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
-  
+* [Racket](https://github.com/jmoy/norvig-spell/blob/master/racket/norvig.rkt)
+
+
 `hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
 
 ## Building
@@ -56,5 +58,6 @@ C++ (hat-trie)          |  3.5     |  3.6                           |166
 Haskell (HashMap)       | 11.5     | 81.3                           | 60
 Haskell (Trie)          | 22.3     |157.0                           | 61
 C (dynamic programming) |  0.3     |162.7                           |225
+Racket                  | 55.2     |377.4                           |106
 
 
