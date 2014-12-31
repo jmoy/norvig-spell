@@ -22,12 +22,14 @@ template<class FO> void deletes(const string&word, FO &f)
 
 template<class FO> void replaces(const string&word, FO &f)
 {
+  string s = word;
   for (auto n=0;n<word.length();n++){
-    string s = word;
+    char c = s[n];
     for (auto i=0;i<alphabet.length();i++){
       s[n] = alphabet[i];
       f(s);
     }
+    s[n] = c;
   }
 }
 
@@ -51,10 +53,11 @@ template<class FO> void inserts(const string&word, FO &f)
 
 template<class FO> void transposes(const string&word, FO &f)
 {
+  string s = word;
   for (auto n=0;n<word.length()-1;n++){
-    string s = word;
     swap(s[n],s[n+1]);
     f(s);
+    swap(s[n],s[n+1]);
  }
 }
 
