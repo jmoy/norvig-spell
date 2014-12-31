@@ -158,7 +158,8 @@ void Norvig<F>::train(istream &fs)
       wrd+=tolower(c);
       fs.get(c);
     }
-    freq.update(wrd);
+    if (!wrd.empty())
+      freq.update(wrd);
   }
 }
 
