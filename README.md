@@ -49,7 +49,7 @@ The different implementations use different algorithms and code organization, so
 This is what I get on my setup.
 
 Version                 | Time (s) | Memory use<br/>(Max resident,M)|Lines of code
-:-----------------------|---------:|--------------------------------:------------:
+:-----------------------|---------:|-------------------------------:|------------:
 Python                  | 12.6     | 75.5                           | 31
 C++ (unordered_map)     |  6.0     |  5.6                           |165
 C++ (hat-trie)          |  3.5     |  3.6                           |166
