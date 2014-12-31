@@ -14,7 +14,7 @@ const string alphabet="abcdefghijklmnopqrstuvwxyz";
 */
 template<class FO> void deletes(const string&word, FO &f)
 {
-  for (auto n=0;n<word.length();++n){
+  for (size_t n=0;n<word.length();++n){
     string s=word;
     s.erase(n,1);
     f(s);
@@ -24,9 +24,9 @@ template<class FO> void deletes(const string&word, FO &f)
 template<class FO> void replaces(const string&word, FO &f)
 {
   string s = word;
-  for (auto n=0;n<word.length();n++){
+  for (size_t n=0;n<word.length();n++){
     char c = s[n];
-    for (auto i=0;i<alphabet.length();i++){
+    for (size_t i=0;i<alphabet.length();i++){
       s[n] = alphabet[i];
       f(s);
     }
@@ -39,13 +39,13 @@ template<class FO> void inserts(const string&word, FO &f)
   auto N = word.length();
   string s;
   
-  for (auto n=0;n<=N;n++){
+  for (size_t n=0;n<=N;n++){
     s.resize(N+1);
-    for (auto j=0;j<n;j++)
+    for (size_t j=0;j<n;j++)
       s[j] = word[j];
-    for (auto j=n;j<N;j++)
+    for (size_t j=n;j<N;j++)
       s[j+1] = word[j];
-    for (auto i=0;i<alphabet.length();i++){
+    for (size_t i=0;i<alphabet.length();i++){
       s[n] = alphabet[i];
       f(s);
     }
@@ -55,7 +55,7 @@ template<class FO> void inserts(const string&word, FO &f)
 template<class FO> void transposes(const string&word, FO &f)
 {
   string s = word;
-  for (auto n=0;n<word.length()-1;n++){
+  for (size_t n=0;n<word.length()-1;n++){
     swap(s[n],s[n+1]);
     f(s);
     swap(s[n],s[n+1]);
@@ -191,7 +191,7 @@ int Norvig<F>::main(int argc,char*argv[])
     getline(cin,word);
     if (word.empty())
       continue;
-    for (auto n=0;n<word.length();n++)
+    for (size_t n=0;n<word.length();n++)
       word[n] = tolower(word[n]);
     cout<<word<<", "<<correct(word)<<'\n';
   }
