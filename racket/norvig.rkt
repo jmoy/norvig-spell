@@ -1,5 +1,9 @@
 #!/usr/bin/env racket
-#lang racket
+#lang racket/base
+
+(require racket/port)
+(require racket/list)
+(require racket/cmdline)
 
 ;;; Norvig's spelling corrector
 
@@ -12,7 +16,7 @@
 ;; with words as keys and frequencies as values
 (define (freqs xs)
   (define m (make-hash))
-  (for [(x xs)]
+  (for ([x (in-list xs)])
     (hash-update! m x add1 0))
   m)
 
@@ -43,7 +47,7 @@
 (define (inserts s)
   (for*/list
       ([n (in-range (add1 (string-length s)))]
-       [c alphabet])
+       [c (in-string alphabet)])
     (string-append 
      (substring s 0 n)
      (string c)
@@ -52,7 +56,7 @@
 (define (replaces s)
   (for*/list
       ([n (in-range (string-length s))]
-       [c alphabet])
+       [c (in-string alphabet)])
     (string-append 
      (substring s 0 n)
      (string c)
@@ -79,7 +83,7 @@
 ;; that is in the hash map.
 (define (known m xs)
   (for*/list
-      ([x xs]
+      ([x (in-list xs)]
        [v (in-value (hash-ref m x #f))]
        #:when v)
     (cons x v)))
@@ -90,7 +94,7 @@
 (define (best xs)
   (define best-pair
     (for/fold ([bst (cons #f 0)])
-      ([x xs])
+      ([x (in-list xs)])
       (if (> (cdr x) (cdr bst)) x bst)))
   (car best-pair))
 
