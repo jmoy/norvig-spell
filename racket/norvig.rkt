@@ -104,14 +104,6 @@
    (best-known (append-map edits1 (edits1 s)))
    s))
 
-;; Reads one word from line from the input port 'in'.
-;; Return a list of (word,correction) pairs.
-(define (correct-all m in)
-  (for*/list
-      [(l (in-lines in))
-       (w (in-value (string-downcase l)))]
-    (cons w (correct m w))))
-
 (module+ main
 ;; The main program.
 ;; Must be called as 
@@ -129,7 +121,9 @@
   
   (define m (train training-file))
 
-  (for ([wp (correct-all m (current-input-port))])
-    (printf "~a, ~a\n" (car wp) (cdr wp))))
+  (for ([l (in-lines)]
+        #:when (not (empty? l))
+        [w (in-value (string-downcase l))])
+    (printf "~a, ~a\n" w (correct m w))))
 
 
