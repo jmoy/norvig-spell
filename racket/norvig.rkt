@@ -1,10 +1,10 @@
 #!/usr/bin/env racket
 #lang racket
 (define (freqs xs)
-  (let [(m (make-hash))]
-    (for [(x xs)]
-      (hash-update! m x (lambda (old) (+ 1 old)) 0))
-    m))
+  (define m (make-hash))
+  (for [(x xs)]
+    (hash-update! m x add1 0))
+  m)
 
 (define (words buf)
   (for/list 
