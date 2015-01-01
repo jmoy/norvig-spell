@@ -33,50 +33,61 @@
     (lambda (fp) (freqs (words (port->string fp))))))
 
 ;; All the allowed letters in a word
-(define alphabet "abcdefghijklmnopqrstuvwxyz")
+(define alphabet 
+  (map string (string->list "abcdefghijklmnopqrstuvwxyz")))
 
-;; One character editing functions. Take a word
-;; return a list of words
-(define (deletes s)
+;; The different ways to split a string
+(define (splits s)
   (for/list
-      ([n (in-range (string-length s))])
-    (string-append 
-     (substring s 0 n)
-     (substring s (add1 n)))))
+      ([n (in-range (add1 (string-length s)))])
+    (cons (substring s 0 n) (substring s n))))
 
-(define (inserts s)
+;; One character editing functions. Take a a split
+;; from splits and return a list of words
+(define (deletes ss)
   (for*/list
-      ([n (in-range (add1 (string-length s)))]
-       [c (in-string alphabet)])
-    (string-append 
-     (substring s 0 n)
-     (string c)
-     (substring s n))))
+      ([s (in-list ss)]
+       [lft (in-value (car s))]
+       [rht (in-value (cdr s))]
+       #:when (not (string=? rht "")))
+    (string-append lft (substring rht 1))))
 
-(define (replaces s)
+(define (inserts ss)
   (for*/list
-      ([n (in-range (string-length s))]
-       [c (in-string alphabet)])
-    (string-append 
-     (substring s 0 n)
-     (string c)
-     (substring s (add1 n)))))
+      ([s (in-list ss)]
+       [lft (in-value (car s))]
+       [rht (in-value (cdr s))]
+       [c (in-list alphabet)])
+    (string-append lft c rht)))
 
-(define (transposes s)
-  (for/list
-      ([n (in-range (- (string-length s) 1))])
-    (string-append
-     (substring s 0 n)
-     (string (string-ref s (add1 n)))
-     (string (string-ref s n))
-     (substring s (+ 2 n)))))
+(define (replaces ss)
+  (for*/list
+      ([s (in-list ss)]
+       [lft (in-value (car s))]
+       [rht (in-value (cdr s))]
+       #:when (not (string=? rht ""))
+       [c (in-list alphabet)])
+    (string-append lft c (substring rht 1))))
+
+(define (transposes ss)
+  (for*/list
+      ([s (in-list ss)]
+       [lft (in-value (car s))]
+       [rht (in-value (cdr s))]
+       #:when (>= (string-length rht) 2))
+    (string-append 
+      lft 
+      (string (string-ref rht 1))
+      (string (string-ref rht 0))
+      (substring rht 2))))
 
 (define (edits1 s)
+  (define ss (splits s))
   (append 
-   (deletes s)
-   (inserts s)
-   (replaces s)
-   (transposes s)))
+   (deletes ss)
+   (inserts ss)
+   (replaces ss)
+   (transposes ss)))
 
 ;; Given a hash map and a list of words, returns
 ;; a list of (word,frequency) pairs for each word
@@ -124,7 +135,7 @@
      filename))
   
   (define m (train training-file))
-
+  
   (for ([l (in-lines)]
         #:when (not (empty? l))
         [w (in-value (string-downcase l))])
