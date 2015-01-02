@@ -34,6 +34,19 @@
           <target>8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+          <artifactId>appassembler-maven-plugin</artifactId>
+        <version>1.9</version>
+        <configuration>
+          <programs>
+            <program>
+              <mainClass>spellcheck.Main</mainClass>
+              <id>spellcheck</id>
+            </program>
+          </programs>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 </project>

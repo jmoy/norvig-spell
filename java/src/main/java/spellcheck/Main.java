@@ -47,7 +47,8 @@ public class Main {
 
     String line;
     while ((line = System.console().readLine()) != null) {
-      System.out.println(correct(line.trim()));
+      String word = line.trim();
+      System.out.println(word + ", " + correct(word).iterator().next());
     }
   }
 }
