@@ -137,7 +137,7 @@
   (define m (train training-file))
   
   (for ([l (in-lines)]
-        #:when (not (empty? l))
+        #:when (not (string=? l ""))
         [w (in-value (string-downcase l))])
     (printf "~a, ~a\n" w (correct m w))))
 
