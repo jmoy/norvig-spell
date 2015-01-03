@@ -1,7 +1,8 @@
-EXECUTABLES:=bin/norvig_py bin/norvig_cc_umap bin/norvig_cc_hat bin/norvig_hs bin/norvig_hs_trie bin/norvig_c_dp bin/norvig_rkt
+EXECUTABLES:=bin/norvig_py bin/norvig_cc_umap bin/norvig_cc_hat bin/norvig_hs bin/norvig_hs_trie bin/norvig_c_dp bin/norvig_rkt bin/norvig_java
 CABAL_MODULES:=haskell haskell-trie
 MAKE_MODULES:=cxx_umap cxx_hat c_dp
-ALL_MODULES:=$(CABAL_MODULES) $(MAKE_MODULES)
+OTHER_MODULES:=java
+ALL_MODULES:=$(CABAL_MODULES) $(MAKE_MODULES) $(OTHER_MODULES)
 BENCHMARKS=$(EXECUTABLES:bin/%=benchmarks/%.md)
 DATAFILES:=data/train.txt data/test.txt data/output.txt
 
@@ -15,9 +16,7 @@ $(CABAL_MODULES):
 	cabal configure --enable-optimization=2 &&\
 	cabal build
 
-$(OTHER_MODULES):
-
-.PHONY: ALL $(ALL_MODULES)
+.PHONY: ALL $(ALL_MODULES) 
 
 bin/norvig_py: python2/norvig.py
 	cp -a $< $@
@@ -40,6 +39,12 @@ bin/norvig_hs_trie: haskell-trie
 bin/norvig_c_dp: c_dp
 	cp -a c_dp/norvig $@
 
+bin/norvig_java: java
+	touch -r repo/com/sampullara/spellcheck/0.1-SNAPSHOT/spellcheck-0.1-SNAPSHOT.jar $@
+
+java:
+	cd java && mvn package appassembler:assemble
+
 benchmark: benchmarks/all.md
 .PHONY: benchmark
 
@@ -49,6 +54,7 @@ benchmarks/%.md: bin/% util/mk_benchmark $(DATAFILES)
 	util/mk_benchmark $< > $@
 
 clean:
+	cd java && mvn clean
 	for dir in $(CABAL_MODULES); do\
 		cd $(CURDIR)/$$dir && cabal clean;\
 	done

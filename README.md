@@ -11,6 +11,7 @@ Implementations of [Norvig's spelling corrector](http://norvig.com/spell-correct
 * C 
  + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
 * [Racket](https://github.com/jmoy/norvig-spell/blob/master/racket/norvig.rkt)
+* [Java](https://github.com/jmoy/norvig-spell/tree/master/java)
 
 
 `hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
@@ -25,6 +26,8 @@ The `hat-trie` library is included as a submodule. Doing
 will build it. 
 
 The Haskell programs depend on the `bytestring`, `bytestring-trie` and `unordered-containers` packages.
+
+The Java program required Java 8 and Maven.
 
 Once you have all the dependencies, running `make` at the top level will build all the programs and place them in `bin/`.
 
@@ -57,5 +60,6 @@ Haskell (HashMap)       | 11.5     | 81.3                           | 60
 Haskell (Trie)          | 22.3     |157.0                           | 61
 C (dynamic programming) |  0.3     |162.7                           |225
 Racket                  | 27.6     |278.3                           | 69<br/>(with tests)
+Java                    | 10.8     |363.2                           |100
 
 
