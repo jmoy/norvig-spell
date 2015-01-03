@@ -21,12 +21,12 @@ public class Main {
   static Stream<String> edit(String w) {
     String alphabet = "abcdefghijklmnopqrstuvwxyz";
     int len = w.length();
-    Stream<String> deletes = range(0, len - 1).mapToObj(i -> w.substring(0, i) + w.substring(i + 1));
+    Stream<String> deletes = range(0, len).mapToObj(i -> w.substring(0, i) + w.substring(i + 1));
     Stream<String> transposes = range(0, len - 1)
             .mapToObj(i -> w.substring(0, i) + w.substring(i + 1, i + 2) + w.substring(i, i + 1) + w.substring(i + 2));
     Stream<String> replaces = range(0, len).boxed()
             .flatMap(i -> alphabet.chars().mapToObj(c -> w.substring(0, i) + (char) c + w.substring(i + 1)));
-    Stream<String> inserts = range(0, len).boxed()
+    Stream<String> inserts = range(0, len + 1).boxed()
             .flatMap(i -> alphabet.chars().mapToObj(c -> w.substring(0, i) + (char) c + w.substring(i)));
     return concat(deletes, transposes, replaces, inserts);
   }
@@ -36,7 +36,11 @@ public class Main {
   }
 
   static Collection<String> known(Stream<String> words) {
-    return words.filter(NWORDS::containsKey).distinct().sorted((s1, s2) -> NWORDS.get(s2) - NWORDS.get(s1)).collect(toList());
+    return words.filter(NWORDS::containsKey).distinct()
+            .sorted((s1, s2) -> {
+              int i = NWORDS.get(s2) - NWORDS.get(s1);
+              return i == 0 ? s1.compareTo(s2) : i;
+            }).collect(toList());
   }
 
   static Collection<String> correct(String word) {
