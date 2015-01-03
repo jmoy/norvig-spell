@@ -11,7 +11,7 @@ Implementations of [Norvig's spelling corrector](http://norvig.com/spell-correct
 * C 
  + [dynamic programming](https://github.com/jmoy/norvig-spell/tree/master/c_dp) 
 * [Racket](https://github.com/jmoy/norvig-spell/blob/master/racket/norvig.rkt)
-* [Java](https://github.com/jmoy/norvig-spell/tree/master/java)
+* [Java 8](https://github.com/jmoy/norvig-spell/tree/master/java)
 
 
 `hat-trie` is the fast trie [implementation](https://github.com/dcjones/hat-trie/) by dcjones.
@@ -27,7 +27,7 @@ will build it.
 
 The Haskell programs depend on the `bytestring`, `bytestring-trie` and `unordered-containers` packages.
 
-The Java program required Java 8 and Maven.
+The Java program requires Java 8 and Maven.
 
 Once you have all the dependencies, running `make` at the top level will build all the programs and place them in `bin/`.
 
