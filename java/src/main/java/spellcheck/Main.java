@@ -1,14 +1,20 @@
 package spellcheck;
 
-import java.io.*;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
-import java.util.*;
+import java.util.Collection;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import static java.util.Arrays.asList;
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 import static java.util.stream.IntStream.range;
-import static spellcheck.Util.*;
+import static spellcheck.Util.concat;
+import static spellcheck.Util.find;
+import static spellcheck.Util.or;
 
 public class Main {
 
@@ -46,7 +52,8 @@ public class Main {
             .collect(toMap(s -> s, s -> 1, (v1, v2) -> v1 + v2));
 
     String line;
-    while ((line = System.console().readLine()) != null) {
+    DataInputStream bis = new DataInputStream(System.in);
+    while ((line = bis.readLine()) != null) {
       String word = line.trim();
       System.out.println(word + ", " + correct(word).iterator().next());
     }
