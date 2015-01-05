@@ -14,7 +14,7 @@
 (require racket/list)
 (require racket/cmdline)
 
-(define ALPHABET (in-list (string->list "abcdefghijklmnopqrstuvwxyz")))
+(define ALPHABET (map string (string->list "abcdefghijklmnopqrstuvwxyz")))
 
 ;; type HFrequency = [Hashof String Nat]
 ;; type LFrequency = [Listof [Cons String Nat]]
@@ -107,13 +107,13 @@
 
 ;; Splits -> [Listof String]
 (define (inserts ss)
-  (for*/list ([s (in-list ss)] [c ALPHABET])
-    (string-append (car s) (string c) (cdr s))))
+  (for*/list ([s (in-list ss)] [c (in-list ALPHABET)])
+    (string-append (car s) c (cdr s))))
 
 ;; Splits -> [Listof String]
 (define (replaces ss)
-  (for*/list ([s (in-list ss)] [rht (in-value (cdr s))] #:when (not (string=? rht "")) [c ALPHABET])
-    (string-append (car s) (string c) (substring rht 1))))
+  (for*/list ([s (in-list ss)] [rht (in-value (cdr s))] #:when (not (string=? rht "")) [c (in-list ALPHABET)])
+    (string-append (car s) c (substring rht 1))))
 
 ;; Splits -> [Listof String]
 (define (transposes ss)

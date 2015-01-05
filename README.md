@@ -59,7 +59,7 @@ C++ (hat-trie)          |  3.5     |  3.6                           |166
 Haskell (HashMap)       | 11.5     | 81.3                           | 60
 Haskell (Trie)          | 22.3     |157.0                           | 61
 C (dynamic programming) |  0.3     |162.7                           |225
-Racket                  | 27.6     |278.3                           | 69<br/>(with tests)
+Racket                  | 23.6     |277.2                           | 69<br/>(with tests)
 Java                    | 10.8     |363.2                           |100
 
 
