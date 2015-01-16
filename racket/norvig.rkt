@@ -20,7 +20,7 @@
 ;; type LFrequency = [Listof [Cons String Nat]]
 
 ;; String[Filename] -> Void
-;; looks at each word on stanrd-in and prints it together with a correction 
+;; looks at each word on standard-in and prints it together with a correction 
 (define (main training-file)
   (define m (train training-file))
   (for ([l (in-lines)]
@@ -97,7 +97,7 @@
     (cons (substring s 0 n) (substring s n))))
 
 ;; Splits -> [Listof String]
-;; One character editing functions. Take a a split from splits and return a list of words
+;; One character editing functions. Take a split from splits and return a list of words
 (module+ test
   (check-equal? (deletes '(("" . "abc") ("a" . "bc") ("ab" . "c") ("abc" . ""))) '("bc" "ac" "ab")))
 
@@ -112,8 +112,12 @@
 
 ;; Splits -> [Listof String]
 (define (replaces ss)
-  (for*/list ([s (in-list ss)] [rht (in-value (cdr s))] #:when (not (string=? rht "")) [c (in-list ALPHABET)])
-    (string-append (car s) c (substring rht 1))))
+  (for*/list ([s (in-list ss)]
+              [rht (in-value (cdr s))]
+              #:when (not (string=? rht ""))
+              [rht-tail (in-value (substring rht 1))]
+              [c (in-list ALPHABET)])
+    (string-append (car s) c rht-tail)))
 
 ;; Splits -> [Listof String]
 (define (transposes ss)
